@@ -1,0 +1,98 @@
+{% extends "basic_app/base.html" %}
+{% block content %}
+    <div class="center-stage">
+        {% for post in post_list %}
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <div class="datetime">
+                <p>Published on: {{ post.publication_date| date:"D M Y" }}</p>
+            </div>
+            {% if post.comments.count == 0 %}
+                <p>No comments yet</p>
+            {% else %}
+                {% for comment in post.comments.all %}
+                    <a href="{% url 'comment_detail' pk=post.pk comment_id=comment.id %}">Comment {{ forloop.counter }}: {{ comment.author }}</a>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{# The good one #}
+
+{#{% extends "basic_app/base.html" %}#}
+{#{% block content %}#}
+{#    <div class="center-stage">#}
+{#        {% for post in post_list %}#}
+{#            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>#}
+{#            <div class="datetime">#}
+{#                <p>Published on: {{ post.publication_date| date:"D M Y" }}</p>#}
+{#            </div>#}
+{#            {% if post.comments.count == 0 %}#}
+{#                <p>No comments yet</p>#}
+{#            {% else %}#}
+{#                {% for comment in post.comments.all %}#}
+{#                    <a href="{% url 'post_detail' pk=post.pk %}"> Comment {{ forloop.counter }}: {{ comment.author }}</a>#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
+{#{% extends "basic_app/base.html" %}#}
+{#{% block content %}#}
+{#    <div class="center-stage">#}
+{#        {% for post in post_list %}#}
+{#            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>#}
+{#            <div class="datetime">#}
+{#                <p>Published on: {{ post.publication_date| date:"D M Y" }}</p>#}
+{#            </div>#}
+{#            {% for comment in post.comments.all %}#}
+{#                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ comment.author }}</a>#}
+{#            {% endfor %}#}
+{#            <h2>Comments</h2>#}
+{#            <ul>#}
+{#                {% for num in my_integers %}#}
+{#                    <li><h3>Comment {{ num }}</h3></li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{#                {% for i in data %}#}
+{#                {% endfor %}#}
+{#                {'n' : range(%post.approve_comments.count%) }#}
+{#                {% for i in n %}#}
+{#                {% for number in post.approve_comments.count| %}#}
+{#                {% for number in range(post.approve_comments.count) %}#}
+{#{% load  'basic_app.filter' %}#}
+
+
+{#{% extends "basic_app/base.html" %}#}
+{#{% block content %}#}
+{#    <div class="center-stage">#}
+{#        {% for post in post_list %}#}
+{#            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>#}
+{#            <div class="datetime">#}
+{#                <p>Published on: {{ post.publication_date| date:"D M Y" }}</p>#}
+{#            </div>#}
+{#            {% for comment in post.comments.all %}#}
+{#                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ comment.id }} {{ comment.author }}</a>#}
+{#            {% endfor %}#}
+{#            {% for comment in post.comments.all %}#}
+{#                <h3>Comment {{ comment.id }}</h3>#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}

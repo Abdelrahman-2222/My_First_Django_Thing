@@ -1,0 +1,9 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+    <div class="center-stage">
+        <h1>{{ comment.post.title }}</h1>
+        <h2>Comment {{ comment.id }} by {{ comment.author }}</h2>
+        <p>{{ comment.text|safe }}</p> {# safe dy 3lsha mtzhrsh el tags #}
+        <p><a href="{% url 'post_detail' pk=comment.post.pk %}">Back to post</a></p>
+    </div>
+{% endblock %}
