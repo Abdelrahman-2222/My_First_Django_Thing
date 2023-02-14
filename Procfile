@@ -1,0 +1,1 @@
+web gunicorn First_Clone_Again.wsgi:application --log-file -
